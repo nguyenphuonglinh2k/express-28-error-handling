@@ -8,6 +8,6 @@ router.get('/', transactionController.index);
 
 router.get('/create', transactionController.create);
 
-route.get('/:id/complete', transactionController.isComplete);
+router.get('/:id/complete', transactionController.isComplete);
 
 module.exports = router;
