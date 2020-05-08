@@ -1,16 +1,13 @@
 const express = require('express');
-var db = require('../db');
+
+var transactionController = require('../controllers/transaction.controller.js')
 
 var router = express.Router();
 
-router.get('/', function(req, res) {
-  res.render('transaction/index', {
-    transactions: db.get('transactions').value()
-  });
-});
+router.get('/', transactionController.index);
 
-router.get('/create', function(req, res) {
-  res.render('transaction/create');
-});
+router.get('/create', transactionController.create);
+
+route.get('/:id/complete', transactionController.isComplete);
 
 module.exports = router;

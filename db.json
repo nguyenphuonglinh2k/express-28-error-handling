@@ -26,7 +26,8 @@
     {
       "id": "1",
       "userId": "1",
-      "bookId": "1"
+      "bookId": "1",
+      "isComplete": false
     }
   ]
 }

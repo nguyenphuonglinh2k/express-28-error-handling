@@ -2,8 +2,8 @@ const shortid = require('shortid');
 var db = require('../db');
 
 module.exports.index = function(req, res) {
-  res.render('book', {
-    books: db.get('books').value()
+  res.render('users/index', {
+    users: db.get('users').value()
   });
 };
 
@@ -13,10 +13,10 @@ module.exports.add = function(req, res) {
 
 module.exports.delete = function(req, res) {
   var id = req.params.id;
-  var item = db.get('books').find({ id: id }).value();
-  var index = db.get('books').indexOf(item).value();
+  var item = db.get('users').find({ id: id }).value();
+  var index = db.get('users').indexOf(item).value();
   
-  db.get('books').splice(index, 1).write();
+  db.get('users').splice(index, 1).write();
   
   res.redirect('back');
 };
@@ -32,20 +32,20 @@ module.exports.postAdd = function(req, res) {
   var id = shortid.generate();
   var title = req.body.title;
   var des = req.body.description;
-  db.get('books').push({ 
+  db.get('users').push({ 
     id: id, 
     title: title,
     description: des
   }).write();
   
-  res.redirect('/books');
+  res.redirect('/users');
 };
 
 module.exports.postUpdate = function(req, res) {
   var id = req.params.id;
   var title = req.body.newTitle;
-  db.get('books').find({ id: id }).value().title = title;
+  db.get('users').find({ id: id }).value().title = title;
   
-  res.redirect('/books');
+  res.redirect('/users');
 };
 
