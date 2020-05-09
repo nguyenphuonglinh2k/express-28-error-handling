@@ -8,7 +8,7 @@ module.exports.index = function(req, res) {
 };
 
 module.exports.add = function(req, res) {
-  res.render('add');
+  res.render('users/add');
 };
 
 module.exports.delete = function(req, res) {

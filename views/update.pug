@@ -1,9 +1,15 @@
-h1 Update Title
+extends ./layouts/common
 
-form(action="/books/" + id + "/update", method="POST")
-  div
-    label New title
-    span &nbsp;
-    input(type="text", name="newTitle")
-    
-  button.btn.btn-primary Update
+block content 
+  h1 Update Title
+
+  form(action="/books/" + id + "/update", method="POST")
+    .form-group
+        label(for='exampleInputEmail1') Title
+        input#exampleInputEmail1.form-control(type='text')
+
+    .form-group
+      label(for='exampleInputPassword1') Description
+      input#exampleInputPassword1.form-control(type='text')
+
+    button.btn.btn-primary(type='submit') Update

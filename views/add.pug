@@ -1,14 +1,15 @@
-h1 Add Book 
+extends ./layouts/common
 
-form.form-group(action="/books/add", method="POST")
-  div
-    label Title
-    span &nbsp;
-    input(type="text", name="title")
-    
-  div
-    label Description
-    span &nbsp;
-    input(type="text", name="description")
-    
-  button.btn.btn-primary Add
+block content
+  h1 Add Book 
+
+  form(action="/books/add", method="POST")
+    .form-group
+      label(for='exampleInputEmail1') Title
+      input#exampleInputEmail1.form-control(type='text')
+      
+    .form-group
+      label(for='exampleInputPassword1') Description
+      input#exampleInputPassword1.form-control(type='text')
+      
+    button.btn.btn-primary(type='submit') Add
