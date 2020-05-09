@@ -6,10 +6,10 @@ block content
   form(action="/books/add", method="POST")
     .form-group
       label(for='exampleInputEmail1') Title
-      input#exampleInputEmail1.form-control(type='text')
+      input#exampleInputEmail1.form-control(type='text', name="title")
       
     .form-group
       label(for='exampleInputPassword1') Description
-      input#exampleInputPassword1.form-control(type='text')
+      input#exampleInputPassword1.form-control(type='text', name='description')
       
     button.btn.btn-primary(type='submit') Add

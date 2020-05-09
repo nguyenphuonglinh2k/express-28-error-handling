@@ -1,9 +1,10 @@
-h1 Update User
+extends ../layouts/common
 
-form(action="/users/" + id + "/update", method="POST")
-  div
-    label New Name
-    span &nbsp;
-    input(type="text", name="newName")
-    
-  button.btn.btn-primary Update
+block content 
+
+  form(action="/users/" + id + "/update", method="POST")
+    .form-group
+      label(for='name') New user's name
+      input#name.form-control(type='text', name='newName')
+
+    button.btn.btn-primary Update

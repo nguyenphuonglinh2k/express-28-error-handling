@@ -6,10 +6,6 @@ block content
   form(action="/books/" + id + "/update", method="POST")
     .form-group
         label(for='exampleInputEmail1') Title
-        input#exampleInputEmail1.form-control(type='text')
-
-    .form-group
-      label(for='exampleInputPassword1') Description
-      input#exampleInputPassword1.form-control(type='text')
+        input#exampleInputEmail1.form-control(type='text', name='newTitle')
 
     button.btn.btn-primary(type='submit') Update

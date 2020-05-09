@@ -23,7 +23,7 @@ module.exports.delete = function(req, res) {
 
 module.exports.update = function(req, res) {
   var id = req.params.id;
-  res.render('update', {
+  res.render('users/update', {
     id: id
   });
 };
