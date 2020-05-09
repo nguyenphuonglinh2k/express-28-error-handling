@@ -1,6 +1,6 @@
 h1 Add Book 
 
-form(action="/books/add", method="POST")
+form.form-group(action="/books/add", method="POST")
   div
     label Title
     span &nbsp;
@@ -11,4 +11,4 @@ form(action="/books/add", method="POST")
     span &nbsp;
     input(type="text", name="description")
     
-  button Add
+  button.btn.btn-primary Add

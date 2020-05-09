@@ -1,25 +1,28 @@
-h1 Transactions
+extends ../layouts/common
 
-ul
-  each item in transactions
-    li
-      span Id:
-      span &nbsp;
-      span= item.id
-      br
-      span User Id:
-      span &nbsp;
-      span= item.userId
-      br
-      span Book Id:
-      span &nbsp;
-      span= item.bookId
-      br 
-      span Complete:
-      span &nbsp;
-      span= item.isComplete
-      br
-      a(href="/transactions/" + item.id + "/complete") Hoàn thành
+block content 
+  h1 Transactions
+
+  ul
+    each item in transactions
+      li
+        span Id:
+        span &nbsp;
+        span= item.id
+        br
+        span User Id:
+        span &nbsp;
+        span= item.userId
+        br
+        span Book Id:
+        span &nbsp;
+        span= item.bookId
+        br 
+        span Complete:
+        span &nbsp;
+        span= item.isComplete
+        br
+        a.btn.btn-primary(href="/transactions/" + item.id + "/complete") Hoàn thành
       
       
       

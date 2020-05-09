@@ -1,4 +1,4 @@
-extends ./layouts/common
+extends ../layouts/common
 
 block content
   h1 User List
@@ -8,8 +8,8 @@ block content
       li
         span= item.name
         span &nbsp;
-        a(href="/users/" + item.id + "/delete") Xóa
+        a.btn.btn-primary(href="/users/" + item.id + "/delete") Xóa
         span &nbsp;
-        a(href="/users/" + item.id + "/update") Update
+        a.btn.btn-primary(href="/users/" + item.id + "/update") Update
     
       

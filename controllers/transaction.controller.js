@@ -13,4 +13,5 @@ module.exports.create = function(req, res) {
 module.exports.isComplete = function(req, res) {
   var id = req.params.id;
   db.get('transactions').find({ id: id }).value().isComplete = true;
+  res.redirect('back');
 };
