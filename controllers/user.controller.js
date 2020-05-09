@@ -30,12 +30,10 @@ module.exports.update = function(req, res) {
 
 module.exports.postAdd = function(req, res) {
   var id = shortid.generate();
-  var title = req.body.title;
-  var des = req.body.description;
+  var name = req.body.name
   db.get('users').push({ 
     id: id, 
-    title: title,
-    description: des
+    name: name
   }).write();
   
   res.redirect('/users');

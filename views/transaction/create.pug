@@ -1,24 +1,28 @@
 extends ../layouts/common
 
 block content   
- h1 Create
+  h1 Create
 
-  form(action="/transactions/create", method="POST")
+  form.mt-4(action="/transactions/create", method="POST")
+    h5.mb-2 User
     .input-group.mb-3
       .input-group-prepend
         label.input-group-text(for='inputGroupSelect01') Options
       select#inputGroupSelect01.custom-select
+        option(selected='') Choose...
         option(value='1') Linh
         
     button.btn.btn-primary Create
 
-  form(action="/transactions/create", method="POST")
-    span Book
-    span &nbsp;
-    select
-      option Conan
-
-    span &nbsp;
+  form.mt-5(action="/transactions/create", method="POST")
+    h5.mb-2 Book
+    .input-group.mb-3
+      .input-group-prepend
+        label.input-group-text(for='inputGroupSelect01') Options
+      select#inputGroupSelect01.custom-select
+        option(selected='') Choose...
+        option(value='1') Conan
+      
     button.btn.btn-primary Create
 
  
