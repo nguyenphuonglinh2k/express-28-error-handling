@@ -24,11 +24,9 @@ app.use('/books', bookRoute);
 app.use('/transactions', transactionRoute);
 
 app.get('/', function(req, res) {
-  res.cookie = {
-    cookie: shortid.generate(),
-    count: 0
-  };
-  console.log(req.cookies.cookie);
+  
+  res.cookie('cookie', shortid.generate());
+  res.set('count', 1);
   res.send('Hello everyone!');
 });
 
