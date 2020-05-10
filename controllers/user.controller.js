@@ -29,20 +29,9 @@ module.exports.update = function(req, res) {
 };
 
 module.exports.postAdd = function(req, res) {
-  var id = shortid.generate();
-  var name = req.body.name
+  req.body.id = shortid.generate();
   
-  if(name.length > 30) {
-    res.render('users/add', {
-      err: 'Name must be shorter than 30 words'
-    });
-    return;
-  }
-  
-  db.get('users').push({ 
-    id: id, 
-    name: name
-  }).write();
+  db.get('users').push(req.body).write();
   
   res.redirect('/users');
 };
