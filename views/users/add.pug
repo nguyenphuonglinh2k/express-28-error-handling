@@ -2,6 +2,9 @@ extends ../layouts/common
 
 block content  
   h1 Add User
+  
+  if err 
+    .alert.alert-danger= err
 
   form(action="/users/add", method="POST")
     .form-group

@@ -3,6 +3,9 @@ extends ../layouts/common
 block content 
   h1 Transactions
 
+  if err
+    .alert.alert-danger= err 
+    
   ul
     each item in transactions
       li
