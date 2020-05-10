@@ -7,6 +7,7 @@ var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
 var transactionRoute = require('./routes/transaction.route.js');
 
+
 const app = express();
 
 app.set("views", "./views");
@@ -23,7 +24,11 @@ app.use('/books', bookRoute);
 app.use('/transactions', transactionRoute);
 
 app.get('/', function(req, res) {
-  res.cookie.cookie = shortid.generate();
+  res.cookie = {
+    cookie: shortid.generate(),
+    count: 0
+  };
+  console.log(req.cookies.cookie);
   res.send('Hello everyone!');
 });
 
