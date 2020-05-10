@@ -1,11 +1,11 @@
 const express = require('express');
 var userController = require('../controllers/user.controller.js');
 var userValidate = require('../validate/user.validate.js');
-var cookieMiddleware = require('../middleware/cookie.middleware.js');
+
 
 var router = express.Router();
 
-router.get('/', cookieMiddleware.cookie, userController.index);
+router.get('/', userController.index);
 
 router.get('/add', userController.add);
 

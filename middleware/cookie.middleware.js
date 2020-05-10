@@ -1,8 +1,10 @@
+var count = 1;
+
 module.exports.cookie = function(req, res, next) {
   if (req.cookies) {
     
-    console.log(`${req.cookies.cookie}: ${res.get('count')}`);
-    res.set('count', res.get('count')
+    console.log(`${req.cookies.cookie}: ${count}`);
+    count++;
   }
   
   next();
