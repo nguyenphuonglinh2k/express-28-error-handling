@@ -12,7 +12,7 @@ router.get('/:id/delete', userController.delete);
 
 router.get('/:id/update', userController.update);
 
-router.post('/add', userValidate.postAdd(), userController.postAdd);
+router.post('/add', userValidate.postAdd, userController.postAdd);
 
 router.post('/:id/update', userController.postUpdate);
 
