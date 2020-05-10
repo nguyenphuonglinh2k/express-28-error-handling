@@ -1,4 +1,6 @@
 const express = require('express');
+var shortid = require('shortid');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 
 var userRoute = require('./routes/user.route.js');
@@ -14,10 +16,16 @@ app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use('/users', userRoute);
 app.use('/books', bookRoute);
 app.use('/transactions', transactionRoute);
+
+app.get('/', function(req, res) {
+  res.cookie.cookie = shortid.generate();
+  res.send('Hello everyone!');
+});
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
