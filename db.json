@@ -16,7 +16,8 @@
       "id": "1",
       "name": "Linh",
       "email": "linh@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "password": "4297f44b13955235245b2497399d7a93",
+      "isAdmin": true
     },
     {
       "id": "luFHp8k0s",
@@ -32,8 +33,7 @@
       "id": "1",
       "userId": "1",
       "bookId": "1",
-      "isComplete": false,
-      "isAdmin": true
+      "isComplete": false
     },
     {
       "id": "2",
