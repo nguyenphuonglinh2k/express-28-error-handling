@@ -7,7 +7,7 @@ block content
     .alert.alert-danger= err 
   
   each item in transactions
-    if !item.isAdmin
+    if item.isAdmin
       .card.m-auto(style='width: 18rem;')
         .card-body
           h5.card-title= 'Id: ' + item.id
@@ -15,6 +15,7 @@ block content
           p.card-text= 'Book ID: ' + item.bookId
           p.card-text= 'Complete: ' + item.isComplete
           a.btn.btn-primary(href="/transactions/" + item.id + "/complete") Hoàn thành
+    else 
       
       
       
