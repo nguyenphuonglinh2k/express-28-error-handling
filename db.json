@@ -33,7 +33,8 @@
       "id": "1",
       "userId": "1",
       "bookId": "1",
-      "isComplete": false
+      "isComplete": false,
+      "isAdmin": true
     },
     {
       "id": "2",
