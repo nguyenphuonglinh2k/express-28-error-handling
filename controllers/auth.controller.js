@@ -31,5 +31,5 @@ module.exports.postLogin = function(req, res, next) {
   }
   
   res.cookie('user-id', shortid.generate());
-  res.redirect('')
+  res.redirect('/transactions')
 }
