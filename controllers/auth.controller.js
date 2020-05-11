@@ -1,5 +1,6 @@
 var shortid = require('shortid');
 var db = require('../db');
+var md5 = require('md5');
 
 module.exports.login = function(req, res) {
   res.render('auth/login');
@@ -8,7 +9,7 @@ module.exports.login = function(req, res) {
 module.exports.postLogin = function(req, res, next) {
   var errs = [];
   var email = req.body.email;
-  var password = req.body.password;
+  var password = md5(req.body.password);
 
   var user = db.get('users').find({ email: email }).value();
 
@@ -22,7 +23,7 @@ module.exports.postLogin = function(req, res, next) {
     return;
   }
 
-  if (password !== '123123') {
+  if (password !== user.password) {
     res.render('auth/login', {
       errs: [
         'Wrong password'

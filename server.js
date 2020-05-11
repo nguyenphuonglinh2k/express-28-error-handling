@@ -1,7 +1,7 @@
 const express = require('express');
 var shortid = require('shortid');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
@@ -28,7 +28,6 @@ app.use('/auth', authRoute);
 
 app.get('/', function(req, res) {
   res.cookie('cookie', shortid.generate());
-  
   res.send('Hello everyone!');
 });
 
