@@ -9,24 +9,12 @@ block content
   ul
     each item in transactions
       if !item.isAdmin
-        li
-        span Id:
-        span &nbsp;
-        span=  item.id
-        br
-        span User Id:
-        span &nbsp;
-        span= item.userId
-        br
-        span Book Id:
-        span &nbsp;
-        span= item.bookId
-        br 
-        span Complete:
-        span &nbsp;
-        span= item.isComplete
-        br
-        a.btn.btn-primary(href="/transactions/" + item.id + "/complete") Hoàn thành
-      
+        .card(style='width: 18rem;')
+          .card-body
+            h5.card-title Id
+            p.card-text User ID:
+            p.card-text Book ID:
+            a.btn.btn-primary(href='#') Ho&agrave;n th&agrave;nh
+
       
       
