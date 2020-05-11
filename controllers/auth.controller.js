@@ -11,5 +11,5 @@ module.exports.postLogin = function(req, res, next) {
   
   var user = db.get('users').find({ name: name }).value();
   
-  if
+
 }
