@@ -8,6 +8,7 @@ var bookRoute = require('./routes/book.route.js');
 var transactionRoute = require('./routes/transaction.route.js');
 var authRoute = require('./routes/auth.route.js');
 var cookieMiddleware = require('./middleware/cookie.middleware.js');
+var authMiddleware = require('./middleware/auth.middleware.js');
 
 const app = express();
 
@@ -20,9 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('/users', cookieMiddleware.cookie, userRoute);
-app.use('/books', cookieMiddleware.cookie, bookRoute);
-app.use('/transactions', cookieMiddleware.cookie, transactionRoute);
+app.use('/users', authMiddleware.authLogin, cookieMiddleware.cookie, userRoute);
+app.use('/books', authMiddleware.authLogin, cookieMiddleware.cookie, bookRoute);
+app.use('/transactions', authMiddleware.authLogin, cookieMiddleware.cookie, transactionRoute);
 app.use('/auth', authRoute);
 
 app.get('/', function(req, res) {
