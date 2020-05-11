@@ -16,7 +16,8 @@ module.exports.postLogin = function(req, res, next) {
     res.render('auth/login', {
       errs: [
         'Email is not exist'
-      ]
+      ],
+      values: req.body
     });
     return;
   }
@@ -25,11 +26,12 @@ module.exports.postLogin = function(req, res, next) {
     res.render('auth/login', {
       errs: [
         'Wrong password'
-      ]
+      ],
+      values: req.body
     });
     return;
   }
   
   res.cookie('user-id', shortid.generate());
-  res.redirect('/transactions')
+  res.redirect('/transactions');
 }

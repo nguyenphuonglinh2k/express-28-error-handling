@@ -8,10 +8,10 @@ block content
       .alert.alert-danger= err
   
   form(method="POST")
-  .form-group
-    label(for='email') Eamil
-    input#email.form-control(type='text', name="email")
-  .form-group
-    label(for='exampleInputPassword1') Password
-    input#exampleInputPassword1.form-control(type='password', name="password")
-  button.btn.btn-primary(type='submit') Login
+    .form-group
+      label(for='email') Email
+      input#email.form-control(type='text', name="email" ,value= values ? value.email : "")
+    .form-group
+      label(for='exampleInputPassword1') Password
+      input#exampleInputPassword1.form-control(type='password', name="password", value= values ? value.password : "")
+    button.btn.btn-primary(type='submit') Login
