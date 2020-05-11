@@ -8,10 +8,11 @@ block content
     
   ul
     each item in transactions
-      li
+      if !item.isAdmin
+        li
         span Id:
         span &nbsp;
-        span= item.id
+        span=  item.id
         br
         span User Id:
         span &nbsp;
