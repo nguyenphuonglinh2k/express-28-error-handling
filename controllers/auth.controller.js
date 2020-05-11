@@ -1,5 +1,5 @@
-var db = require('../db');
 var shortid = require('shortid');
+var db = require('../db');
 
 module.exports.login = function(req, res) {
   res.render('auth/login');
@@ -7,11 +7,11 @@ module.exports.login = function(req, res) {
 
 module.exports.postLogin = function(req, res, next) {
   var errs = [];
-  var name = req.body.name;
-  var password = req.body.passowrd;
-  
-  var user = db.get('users').find({ name: name }).value();
-  
+  var email = req.body.email;
+  var password = req.body.password;
+
+  var user = db.get('users').find({ email: email }).value();
+
   if (!user) {
     res.render('auth/login', {
       errs: [
@@ -21,7 +21,7 @@ module.exports.postLogin = function(req, res, next) {
     });
     return;
   }
-  
+
   if (password !== '123123') {
     res.render('auth/login', {
       errs: [
@@ -32,6 +32,6 @@ module.exports.postLogin = function(req, res, next) {
     return;
   }
   
-  res.cookie('user-id', shortid.generate());
+  res.cookie('userId', shortid.generate());
   res.redirect('/transactions');
 }

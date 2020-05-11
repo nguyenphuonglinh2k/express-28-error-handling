@@ -10,8 +10,8 @@ block content
   form(method="POST")
     .form-group
       label(for='email') Email
-      input#email.form-control(type='text', name="email" ,value= values ? value.email : "")
+      input#email.form-control(type='email', name="email" ,value= values ? values.email : "")
     .form-group
       label(for='exampleInputPassword1') Password
-      input#exampleInputPassword1.form-control(type='password', name="password", value= values ? value.password : "")
+      input#exampleInputPassword1.form-control(type='password', name="password", value= values ? values.password : "")
     button.btn.btn-primary(type='submit') Login
