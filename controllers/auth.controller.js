@@ -33,6 +33,6 @@ module.exports.postLogin = function(req, res, next) {
     return;
   }
   
-  res.cookie('userId', shortid.generate());
+  res.cookie('userId', user.id);
   res.redirect('/transactions');
 }
