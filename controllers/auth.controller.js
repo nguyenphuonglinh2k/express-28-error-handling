@@ -22,19 +22,19 @@ module.exports.postLogin = function(req, res, next) {
     });
     return;
   }
-
-  if (password !== user.password) {
-    bcrypt.compare(password, user.password, function(err, result) {
-    // result == true
+  
+  bcrypt.compare(password, user.password, function(err, result) {
+    console.log(result == false);
+    if (result === false) {
+      res.render('auth/login', {
+        errs: [
+          'Wrong password'
+        ],
+        values: req.body
+      });
+      return;
+    }
   });
-    res.render('auth/login', {
-      errs: [
-        'Wrong password'
-      ],
-      values: req.body
-    });
-    return;
-  }
   
   res.cookie('userId', user.id);
   res.redirect('/transactions');
