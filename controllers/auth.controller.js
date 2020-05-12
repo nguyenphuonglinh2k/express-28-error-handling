@@ -48,7 +48,9 @@ module.exports.postLogin = function(req, res, next) {
       
       count = 0;
       
-      res.cookie("userId", user.id);
+      res.cookie("userId", user.id, {
+        signed: true
+      });
       return res.redirect("/transactions");
     }
   });

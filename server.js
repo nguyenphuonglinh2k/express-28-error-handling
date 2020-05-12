@@ -19,7 +19,7 @@ app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(cookieParser('hauoeiwnwh7618y989'));
 
 app.use('/users', authMiddleware.authLogin, cookieMiddleware.cookie, userRoute);
 app.use('/books', authMiddleware.authLogin, cookieMiddleware.cookie, bookRoute);
@@ -28,12 +28,6 @@ app.use('/auth', authRoute);
 
 app.get('/', function(req, res) {
   res.cookie('cookie', shortid.generate());
-//   bcrypt.hash('123123', 10, function(err, hash) {
-//     console.log(`Hash: ${hash}`);
-//   });
-//   bcrypt.compare('123123', '$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a', function(err, result) {
-//     console.log(result);
-// });
   
   res.send('Hello everyone!');
 });
