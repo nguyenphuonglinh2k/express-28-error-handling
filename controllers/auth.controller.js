@@ -1,6 +1,7 @@
 var shortid = require('shortid');
 var db = require('../db');
 var bcrypt = require('bcrypt');
+var count = 1;
 
 module.exports.login = function(req, res) {
   res.render('auth/login');
@@ -8,7 +9,6 @@ module.exports.login = function(req, res) {
 
 module.exports.postLogin = function(req, res, next) {
   var errs = [];
-  var valueCompare;
   var email = req.body.email;
   var password = req.body.password;
 
@@ -32,7 +32,9 @@ module.exports.postLogin = function(req, res, next) {
         ]
       });
     } else if (!result) {
-        user.wrongLoginCount = user.wrongLoginCount++;
+        user.wrongLoginCount = count++;
+        db.write();
+        console.log(user.wrongLoginCount);
         return res.render('auth/login', {
           errs: [
             'Wrong password'
