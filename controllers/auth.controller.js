@@ -31,15 +31,23 @@ module.exports.postLogin = function(req, res, next) {
         errs: ["Bạn nhập sai quá số lần cho phép"]
       });
     } else if (!result) {
-      user.set('wrongLoginCount', count)
-      console.log(user.wrongLoginCount);
+      db.get("users")
+        .find({ email: email })
+        .set("wrongLoginCount", ++count)
+        .write();
+      
       return res.render("auth/login", {
         errs: ["Wrong password"],
         values: req.body
       });
     } else {
-      // user.assign({ wrongLoginCount: 0 }).write();
-      // count = 0;
+      db.get("users")
+        .find({ email: email })
+        .set("wrongLoginCount", 0)
+        .write();
+      
+      count = 0;
+      
       res.cookie("userId", user.id);
       return res.redirect("/transactions");
     }
