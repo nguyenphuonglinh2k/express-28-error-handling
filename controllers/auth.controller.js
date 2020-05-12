@@ -7,16 +7,12 @@ module.exports.login = function(req, res) {
 }
 
 module.exports.postLogin = function(req, res, next) {
-  var errs = [], compare;
+  var errs = [];
+  var valueCompare;
   var email = req.body.email;
   var password = req.body.password;
 
   var user = db.get('users').find({ email: email }).value();
-  
-  bcrypt.compare(password, user.password, function(err, result) {
-    compare = result;
-    console.log(compare);
-  });
 
   if (!user) {
     res.render('auth/login', {
@@ -28,7 +24,12 @@ module.exports.postLogin = function(req, res, next) {
     return;
   }
   
-  if (compare === false) {
+  bcrypt.compare(password, user.password, function(err, result) {
+    valueCompare = result;
+  });
+  console.log(valueCompare);
+  
+  if (!valueCompare) {
     res.render('auth/login', {
       errs: [
         'Wrong password'
