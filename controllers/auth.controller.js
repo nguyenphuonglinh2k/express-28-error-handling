@@ -25,20 +25,17 @@ module.exports.postLogin = function(req, res, next) {
   }
   
   bcrypt.compare(password, user.password, function(err, result) {
-    valueCompare = result;
+    if (!result) {
+      return res.render('auth/login', {
+        errs: [
+          'Wrong password'
+        ],
+        values: req.body
+      });
+    } else {
+      res.cookie('userId', user.id);
+      return res.redirect('/transactions');
+    }
   });
-  console.log(valueCompare);
-  
-  if (!valueCompare) {
-    res.render('auth/login', {
-      errs: [
-        'Wrong password'
-      ],
-      values: req.body
-    });
-    return;
-  }
-  
-  res.cookie('userId', user.id);
-  res.redirect('/transactions');
+
 }
