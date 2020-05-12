@@ -25,17 +25,24 @@ module.exports.postLogin = function(req, res, next) {
   }
   
   bcrypt.compare(password, user.password, function(err, result) {
-    if (!result) {
-      return res.render('auth/login', {
+    if (user.wrongLoginCount >= 4) {
+      return res.render('/auth/login', {
         errs: [
-          'Wrong password'
-        ],
-        values: req.body
+          'Bạn nhập sai quá số lần cho phép'
+        ]
       });
-    } else {
-      res.cookie('userId', user.id);
-      return res.redirect('/transactions');
-    }
-  });
+    } else if (!result) {
+        user.wrongLoginCount = user.wrongLoginCount++;
+        return res.render('auth/login', {
+          errs: [
+            'Wrong password'
+          ],
+          values: req.body
+        });
+      } else {
+        res.cookie('userId', user.id);
+        return res.redirect('/transactions');
+      }
+    });
 
 }
