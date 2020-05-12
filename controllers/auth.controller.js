@@ -1,50 +1,46 @@
-var shortid = require('shortid');
-var db = require('../db');
-var bcrypt = require('bcrypt');
-var count = 1;
+var shortid = require("shortid");
+var db = require("../db");
+var bcrypt = require("bcrypt");
+var count = 0;
 
 module.exports.login = function(req, res) {
-  res.render('auth/login');
-}
+  res.render("auth/login");
+};
 
 module.exports.postLogin = function(req, res, next) {
   var errs = [];
   var email = req.body.email;
   var password = req.body.password;
 
-  var user = db.get('users').find({ email: email }).value();
+  var user = db
+    .get("users")
+    .find({ email: email })
+    .value();
 
   if (!user) {
-    res.render('auth/login', {
-      errs: [
-        'Email is not exist'
-      ],
+    res.render("auth/login", {
+      errs: ["Email is not exist"],
       values: req.body
     });
     return;
   }
-  
+
   bcrypt.compare(password, user.password, function(err, result) {
     if (user.wrongLoginCount >= 4) {
-      return res.render('/auth/login', {
-        errs: [
-          'Bạn nhập sai quá số lần cho phép'
-        ]
+      return res.render("auth/login", {
+        errs: ["Bạn nhập sai quá số lần cho phép"]
       });
     } else if (!result) {
-        user.wrongLoginCount = count++;
-        db.write();
-        console.log(user.wrongLoginCount);
-        return res.render('auth/login', {
-          errs: [
-            'Wrong password'
-          ],
-          values: req.body
-        });
-      } else {
-        res.cookie('userId', user.id);
-        return res.redirect('/transactions');
-      }
-    });
-
-}
+      user.assign({ wrongLoginCount: ++count }).write();
+      return res.render("auth/login", {
+        errs: ["Wrong password"],
+        values: req.body
+      });
+    } else {
+      user.assign({ wrongLoginCount: 0 }).write();
+      count = 0;
+      res.cookie("userId", user.id);
+      return res.redirect("/transactions");
+    }
+  });
+};
