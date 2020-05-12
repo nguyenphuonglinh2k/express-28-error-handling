@@ -5,6 +5,5 @@ module.exports.authLogin = function(req, res, next) {
       res.redirect('/auth/login');
     }
   
-    res.locals.user = db.get('users')
     next();
 };
