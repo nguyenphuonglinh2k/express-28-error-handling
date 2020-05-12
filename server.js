@@ -28,6 +28,13 @@ app.use('/auth', authRoute);
 
 app.get('/', function(req, res) {
   res.cookie('cookie', shortid.generate());
+//   bcrypt.hash('123123', 10, function(err, hash) {
+//     console.log(`Hash: ${hash}`);
+//   });
+//   bcrypt.compare('123123', '$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a', function(err, result) {
+//     console.log(result);
+// });
+  
   res.send('Hello everyone!');
 });
 
