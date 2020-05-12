@@ -18,7 +18,7 @@
       "email": "linh@gmail.com",
       "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
       "isAdmin": true,
-      "wrongLoginCount": "0"
+      "wrongLoginCount": 0
     },
     {
       "name": "Hong",
@@ -40,5 +40,4 @@
       "isComplete": false
     }
   ]
-},
-      "wrongLoginCount": 0
+}

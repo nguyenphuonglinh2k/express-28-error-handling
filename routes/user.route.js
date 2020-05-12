@@ -2,7 +2,6 @@ const express = require('express');
 var userController = require('../controllers/user.controller.js');
 var userValidate = require('../validate/user.validate.js');
 
-
 var router = express.Router();
 
 router.get('/', userController.index);

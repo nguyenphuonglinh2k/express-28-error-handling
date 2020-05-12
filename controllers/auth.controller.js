@@ -31,7 +31,7 @@ module.exports.postLogin = function(req, res, next) {
         errs: ["Bạn nhập sai quá số lần cho phép"]
       });
     } else if (!result) {
-      // user.assign({ wrongLoginCount: ++count }).write();
+      user.set('wrongLoginCount', count)
       console.log(user.wrongLoginCount);
       return res.render("auth/login", {
         errs: ["Wrong password"],

@@ -48,11 +48,11 @@ module.exports.postAdd = function(req, res) {
 
 module.exports.postUpdate = function(req, res) {
   var id = req.params.id;
-  var title = req.body.newTitle;
+  var name = req.body.newName;
   db
     .get("users")
     .find({ id: id })
-    .value().title = title;
+    .value().name = name;
 
   res.redirect("/users");
 };
