@@ -25,7 +25,12 @@ const msg = {
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
 
-sgMail.send(msg);
+sgMail.send(msg).then(() => {
+    console.log('Message sent')
+}).catch((error) => {
+    console.log(error.response.body)
+    // console.log(error.response.body.errors[0].message)
+})
 
 app.set("views", "./views");
 app.set("view engine", "pug");
