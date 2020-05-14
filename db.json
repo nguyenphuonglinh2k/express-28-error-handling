@@ -17,15 +17,16 @@
       "name": "Linh",
       "email": "linh@gmail.com",
       "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
-      "avatar": "https://cdn.glitch.com/49847997-ff48-4a1b-ba30-d8294535157f%2Fhinh-anh-cho-pomsky-dep-45.jpg?v=1589472347877",
+      "avatarUrl": "https://stafforgserv.com.au/wp-content/uploads/2018/09/user-img.png",
       "isAdmin": true,
       "wrongLoginCount": 0
     },
     {
-      "id": "1",
-      "name": "Linh",
-      "email": "linh@gmail.com",
+      "id": "2",
+      "name": "Yen",
+      "email": "yen@gmail.com",
       "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
+      "avatarUrl": "https://stafforgserv.com.au/wp-content/uploads/2018/09/user-img.png",
       "wrongLoginCount": 0
     }
   ],
@@ -39,7 +40,7 @@
     },
     {
       "id": "2",
-      "userId": "luFHp8k0s",
+      "userId": "2",
       "bookId": "mrazmGpTQ",
       "isComplete": false
     }

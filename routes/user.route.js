@@ -1,4 +1,6 @@
 const express = require('express');
+var multer = require('multer');
+
 var userController = require('../controllers/user.controller.js');
 var userValidate = require('../validate/user.validate.js');
 
