@@ -36,6 +36,10 @@ module.exports.update = function(req, res) {
   });
 };
 
+module.exports.profile = function(req, res) {
+  res.render('user/profile');
+};
+
 module.exports.postAdd = function(req, res) {
   req.body.id = shortid.generate();
 
