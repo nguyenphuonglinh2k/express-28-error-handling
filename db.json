@@ -15,7 +15,7 @@
     {
       "id": "1",
       "name": "Linh",
-      "email": "linh@gmail.com",
+      "email": "nguyenphuonglinh11102000@gmail.com",
       "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
       "isAdmin": true,
       "wrongLoginCount": 0
