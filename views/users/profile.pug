@@ -1,2 +1,15 @@
-h1 Update Profile
+extends ../layouts/common
 
+block content 
+  h1.mb-5 Update Profile
+  
+  forn.mb-3
+    label Avatar
+    img.text-center(src="https://stafforgserv.com.au/wp-content/uploads/2018/09/user-img.png", style="width: 120")
+
+  form(method="POST", enctype="multipart/form-data")
+      .form-group
+        label(for='name') Name
+        input#name.form-control(type='text', name='name')
+
+      button.btn.btn-primary Update

@@ -37,7 +37,7 @@ module.exports.update = function(req, res) {
 };
 
 module.exports.profile = function(req, res) {
-  res.render('user/profile');
+  res.render('users/profile');
 };
 
 module.exports.postAdd = function(req, res) {
