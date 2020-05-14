@@ -17,12 +17,16 @@
       "name": "Linh",
       "email": "linh@gmail.com",
       "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
+      "avatar": "https://cdn.glitch.com/49847997-ff48-4a1b-ba30-d8294535157f%2Fhinh-anh-cho-pomsky-dep-45.jpg?v=1589472347877",
       "isAdmin": true,
       "wrongLoginCount": 0
     },
     {
-      "name": "Hong",
-      "id": "o_mQCzMOI"
+      "id": "1",
+      "name": "Linh",
+      "email": "linh@gmail.com",
+      "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
