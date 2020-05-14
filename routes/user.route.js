@@ -14,6 +14,8 @@ router.get('/:id/update', userController.update);
 
 router.get('/profile', userController.profile);
 
+router.get('/profile/avatar', userController.uploadAvatar);
+
 router.post('/add', userValidate.postAdd, userController.postAdd);
 
 router.post('/:id/update', userController.postUpdate);

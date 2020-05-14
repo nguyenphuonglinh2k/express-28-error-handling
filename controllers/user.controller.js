@@ -40,6 +40,10 @@ module.exports.profile = function(req, res) {
   res.render('users/profile');
 };
 
+module.exports.uploadAvatar = function(req, res) {
+  res.render('users/avatar');
+};
+
 module.exports.postAdd = function(req, res) {
   req.body.id = shortid.generate();
 
