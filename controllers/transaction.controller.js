@@ -1,7 +1,8 @@
 var db = require('../db');
 
 module.exports.index = function(req, res) {
-  var userId = req.cookies.userId;
+  var userId = req.signedCookies.userId;
+
   res.render('transaction/index', {
     transactions: db.get('transactions').value(),
     userId: userId
