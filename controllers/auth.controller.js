@@ -34,11 +34,11 @@ module.exports.postLogin = function(req, res, next) {
   bcrypt.compare(password, user.password, function(err, result) {
     if (count === 3) {
       const msg = {
-        to: user.eamil,
+        to: 'nguyenphuonglinh11102000@gmail.com',
         from: 'nguyenphuonglinh11102000@gmail.com',
-        subject: '',
-        text: 'and easy to do anywhere, even with Node.js',
-        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        subject: 'Login Warning',
+        text: 'you had entered wrong password 3 times',
+        html: '<strong>You had entered wrong password 3 times.</strong>',
       };
 
       sgMail.send(msg).then(() => {
