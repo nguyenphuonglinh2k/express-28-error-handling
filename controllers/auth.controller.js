@@ -31,26 +31,7 @@ module.exports.postLogin = function(req, res, next) {
     return;
   }
 
-  bcrypt.compare(password, user.password, function(err, result) {
-  console.log(count === 3);
-//     if (count === 3) {
-//       console.log(count);
-//       const msg = {
-//         to: 'nguyenphuonglinh11102000@gmail.com',
-//         from: 'nguyenphuonglinh11102000@gmail.com',
-//         subject: 'Login Warning',
-//         text: 'you had entered wrong password 3 times',
-//         html: '<strong>You had entered wrong password 3 times.</strong>',
-//       };
-
-//       sgMail.send(msg).then(() => {
-//           console.log('Message sent')
-//       }).catch((error) => {
-//           console.log(error.response.body)
-//           // console.log(error.response.body.errors[0].message)
-//       });
-//     }
-    
+  bcrypt.compare(password, user.password, function(err, result) { 
     if (user.wrongLoginCount >= 4) {
         return res.render("auth/login", {
           errs: ["Bạn nhập sai quá số lần cho phép"]
@@ -61,7 +42,23 @@ module.exports.postLogin = function(req, res, next) {
             .find({ email: email })
             .set("wrongLoginCount", ++count)
             .write();
-          console.log(count);
+          
+           if (count === 3) {
+            const msg = {
+              to: user.email,
+              from: 'nguyenphuonglinh11102000@gmail.com',
+              subject: 'Login Warning',
+              text: 'you had entered wrong password 3 times',
+              html: '<strong>You had entered wrong password 3 times.</strong>',
+            };
+
+            sgMail.send(msg).then(() => {
+                console.log('Message sent')
+            }).catch((error) => {
+                console.log(error.response.body)
+                // console.log(error.response.body.errors[0].message)
+            });
+          }
         
           return res.render("auth/login", {
             errs: ["Wrong password"],
