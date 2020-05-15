@@ -46,7 +46,9 @@ module.exports.update = function(req, res) {
 };
 
 module.exports.profile = function(req, res) {
-  res.render('users/profile');
+  res.render('users/profile', {
+    user: res.locals.user
+  });
 };
 
 module.exports.uploadAvatar = function(req, res) {
