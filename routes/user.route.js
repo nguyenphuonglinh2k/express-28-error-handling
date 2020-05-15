@@ -4,6 +4,8 @@ var multer = require('multer');
 var userController = require('../controllers/user.controller.js');
 var userValidate = require('../validate/user.validate.js');
 
+var upload = multer({ dest: './public/' });
+
 var router = express.Router();
 
 router.get('/', userController.index);
@@ -18,7 +20,7 @@ router.get('/profile', userController.profile);
 
 router.get('/profile/avatar', userController.uploadAvatar);
 
-router.post('/profile/avatar', userController.postUpLoadAvatar);
+router.post('/profile/avatar', upload.single('avatarUrl'), userController.postUpLoadAvatar);
 
 router.post('/add', userValidate.postAdd, userController.postAdd);
 
