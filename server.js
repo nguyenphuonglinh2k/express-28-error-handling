@@ -35,7 +35,7 @@ app.use('/auth', authRoute);
 
 app.get('/', function(req, res) {
   res.cookie('cookie', shortid.generate());
-  cloudinary.v2.uploader.upload("https://cdn.glitch.com/49847997-ff48-4a1b-ba30-d8294535157f%2Fhinh-anh-cho-pomsky-dep-45.jpg?v=1589472347877", 
+  cloudinary.uploader.upload("https://cdn.glitch.com/49847997-ff48-4a1b-ba30-d8294535157f%2Fhinh-anh-cho-pomsky-dep-45.jpg?v=1589472347877", 
     function(error, result) {console.log(result, error)});
   res.send('Hello everyone!');
 });
