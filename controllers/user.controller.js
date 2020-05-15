@@ -56,9 +56,12 @@ module.exports.uploadAvatar = function(req, res) {
 };
 
 module.exports.postUpLoadAvatar = function(req, res) {
- 
-  cloudinary.uploader.upload(req.file.path.slice(7), 
-    function(error, result) {console.log(result, error)});
+ var avatar = 'https://21-file-uploadd.glitch.me/' + req.file.path.slice(7);
+  cloudinary.uploader.upload(avatar, 
+    function(error, result) {
+      console.log(result, error);
+      res.locals.user.set('avatarUrl', result.url).write();
+  });
 };
 
 module.exports.postAdd = function(req, res) {
