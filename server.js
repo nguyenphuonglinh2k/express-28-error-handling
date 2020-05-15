@@ -13,6 +13,12 @@ var authMiddleware = require('./middleware/auth.middleware.js');
 
 const app = express();
 
+cloudinary.config({
+  cloud_name: 'coders-tokyo',
+  api_key: '316918985498395',
+  api_secret: '7Fd6PRv0653kJyMoofFOHkNhyWw'
+});
+
 app.set("views", "./views");
 app.set("view engine", "pug");
 
