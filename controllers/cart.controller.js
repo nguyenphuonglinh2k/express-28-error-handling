@@ -1,4 +1,5 @@
 var db = require('../db');
+const shortid = require("shortid");
 
 module.exports.addToCart = function(req, res) {
   var bookId = req.params.id;
@@ -21,4 +22,23 @@ module.exports.addToCart = function(req, res) {
     .write();
 
   res.redirect('/books');
+};
+
+module.exports.addTransaction = function(req, res) {
+  var bookId = req.params.id;
+  console.log(bookId);
+//   var sessionId = req.signedCookies.sessionId;
+//   var transactionId = shortid.generate();
+  
+//   if (!sessionId) {
+//     res.redirect('/books');
+//     return;
+//   }
+  
+//   db.get('transactions').push({
+//     id: transactionId,
+//     sessionId: sessionId,
+//     bookId: bookId,
+//     isComlete: false
+//   }).write();
 };

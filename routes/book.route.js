@@ -18,6 +18,8 @@ router.get('/:id/update', bookController.update);
 
 router.get('/cart/add/:id', cartController.addToCart);
 
+router.get('/cart/transaction/:id', cartController.addTransaction);
+
 router.post('/add', upload.single('coverUrl'), bookController.postAdd);
 
 router.post('/:id/update', bookController.postUpdate);
