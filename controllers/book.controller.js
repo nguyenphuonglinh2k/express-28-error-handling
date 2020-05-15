@@ -1,5 +1,14 @@
+require('dotenv').config(); 
+
 const shortid = require('shortid');
 var db = require('../db');
+var cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
 
 module.exports.index = function(req, res) {
   res.render('book', {
@@ -32,11 +41,19 @@ module.exports.postAdd = function(req, res) {
   var id = shortid.generate();
   var title = req.body.title;
   var des = req.body.description;
+  var image = 'https://21-file-uploadd.glitch.me/' + req.file.path.slice(7);
+  
   db.get('books').push({ 
     id: id, 
     title: title,
     description: des
   }).write();
+  
+  cloudinary.uploader.upload(image, 
+    function(error, result) {
+      console.log(result, error);
+      db.get("books").find({ id: res.locals.user.id}).set('avatarUrl', result.url).write();
+  });
   
   res.redirect('/books');
 };
