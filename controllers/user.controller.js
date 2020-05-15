@@ -1,5 +1,12 @@
 const shortid = require("shortid");
 var db = require("../db");
+var cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  cloud_name: 'coders-tokyo',
+  api_key: '316918985498395',
+  api_secret: '7Fd6PRv0653kJyMoofFOHkNhyWw'
+});
 
 module.exports.index = function(req, res) {
   res.render("users/index", {
@@ -41,7 +48,15 @@ module.exports.profile = function(req, res) {
 };
 
 module.exports.uploadAvatar = function(req, res) {
-  res.render('users/avatar');
+  res.render('users/avatar', {
+    user: res.locals.user
+  });
+};
+
+module.exports.postUpLoadAvatar = function(req, res) {
+  console.log(req.body.avatarUrl);
+  cloudinary.uploader.upload(req.body.avatarUrl, 
+    function(error, result) {console.log(result, error)});
 };
 
 module.exports.postAdd = function(req, res) {

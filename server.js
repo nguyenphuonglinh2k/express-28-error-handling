@@ -2,7 +2,6 @@ const express = require('express');
 var shortid = require('shortid');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cloudinary = require('cloudinary').v2;
 
 var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
@@ -12,12 +11,6 @@ var cookieMiddleware = require('./middleware/cookie.middleware.js');
 var authMiddleware = require('./middleware/auth.middleware.js');
 
 const app = express();
-
-cloudinary.config({
-  cloud_name: 'coders-tokyo',
-  api_key: '316918985498395',
-  api_secret: '7Fd6PRv0653kJyMoofFOHkNhyWw'
-});
 
 app.set("views", "./views");
 app.set("view engine", "pug");
@@ -35,8 +28,6 @@ app.use('/auth', authRoute);
 
 app.get('/', function(req, res) {
   res.cookie('cookie', shortid.generate());
-  cloudinary.uploader.upload("https://cdn.glitch.com/49847997-ff48-4a1b-ba30-d8294535157f%2Fhinh-anh-cho-pomsky-dep-45.jpg?v=1589472347877", 
-    function(error, result) {console.log(result, error)});
   res.send('Hello everyone!');
 });
 
