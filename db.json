@@ -58,7 +58,11 @@
       "id": "xHAl32fE5"
     },
     {
-      "id": "GsxRPtSAV"
+      "id": "GsxRPtSAV",
+      "cart": [
+        null,
+        1
+      ]
     }
   ]
 }

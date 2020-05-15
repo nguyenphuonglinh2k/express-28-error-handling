@@ -1,6 +1,8 @@
 const express = require('express');
 var multer = require('multer');
+
 var bookController = require('../controllers/book.controller.js');
+var cartController = require('../controllers/cart.controller.js');
 
 var upload = multer({ dest: './public/' });
 
@@ -14,7 +16,7 @@ router.get('/:id/delete', bookController.delete);
 
 router.get('/:id/update', bookController.update);
 
-router.get('/cart/add/:id', bookController.addToCart);
+router.get('/cart/add/:id', cartController.addToCart);
 
 router.post('/add', upload.single('coverUrl'), bookController.postAdd);
 
