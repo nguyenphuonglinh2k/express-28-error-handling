@@ -7,8 +7,10 @@ var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
 var transactionRoute = require('./routes/transaction.route.js');
 var authRoute = require('./routes/auth.route.js');
+
 var cookieMiddleware = require('./middleware/cookie.middleware.js');
 var authMiddleware = require('./middleware/auth.middleware.js');
+var sessionMiddleware = require('./middleware/session.middleware.js');
 
 const app = express();
 
@@ -20,6 +22,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser('hauoeiwnwh7618y989'));
+app.use(sessionMiddleware);
 
 app.use('/users', authMiddleware.authLogin, cookieMiddleware.cookie, userRoute);
 app.use('/books', cookieMiddleware.cookie, bookRoute);
