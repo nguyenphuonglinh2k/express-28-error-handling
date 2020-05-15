@@ -17,7 +17,7 @@
       "name": "Linh",
       "email": "linh@gmail.com",
       "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
-      "avatarUrl": "https://stafforgserv.com.au/wp-content/uploads/2018/09/user-img.png",
+      "avatarUrl": "http://res.cloudinary.com/coders-tokyo/image/upload/v1589523269/nzznawsqjlwlc1ey46ea.jpg",
       "isAdmin": true,
       "wrongLoginCount": 0
     },
