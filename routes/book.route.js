@@ -14,6 +14,8 @@ router.get('/:id/delete', bookController.delete);
 
 router.get('/:id/update', bookController.update);
 
+router.get('/cart/add/:id', bookController.addToCart);
+
 router.post('/add', upload.single('coverUrl'), bookController.postAdd);
 
 router.post('/:id/update', bookController.postUpdate);

@@ -13,8 +13,8 @@ block content
           .card-body
             h5.card-title= item.title
             p.card-text= item.description
-            a.btn.btn-primary.mr-2(href='#') Xóa 
-            a.btn.btn-primary.mr-2(href='#') Update
-            a.btn.btn-primary.mt-2(href='#') Thuê sách
+            a.btn.btn-primary.mr-2(href='/books/' + item.id + '/delete') Xóa 
+            a.btn.btn-primary.mr-2(href='/books/' + item.id + '/update') Update
+            a.btn.btn-primary.mt-2(href='/books/cart/add/' + item.id) Thuê sách
     
       

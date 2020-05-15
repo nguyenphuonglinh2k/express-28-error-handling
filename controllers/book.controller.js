@@ -37,6 +37,12 @@ module.exports.update = function(req, res) {
   });
 };
 
+module.exports.addToCart = function(req, res) {
+  var id = req.params.id;
+  
+  
+};
+
 module.exports.postAdd = function(req, res) {
   var id = shortid.generate();
   var title = req.body.title;
