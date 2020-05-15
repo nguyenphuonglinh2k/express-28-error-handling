@@ -1,11 +1,13 @@
+require('dotenv').config(); 
+
 const shortid = require("shortid");
 var db = require("../db");
 var cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
-  cloud_name: 'coders-tokyo',
-  api_key: '316918985498395',
-  api_secret: '7Fd6PRv0653kJyMoofFOHkNhyWw'
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
 });
 
 module.exports.index = function(req, res) {
