@@ -57,7 +57,7 @@ module.exports.postUpLoadAvatar = function(req, res) {
   console.log(req.file.path);
 //   cloudinary.uploader.upload(req.body.avatarUrl, 
 //     function(error, result) {console.log(result, error)});
-// };
+};
 
 module.exports.postAdd = function(req, res) {
   req.body.id = shortid.generate();
