@@ -3,7 +3,7 @@ extends ./layouts/common
 block content
   h1 Add Book 
 
-  form(action="/books/add", method="POST")
+  form(action="/books/add", method="POST", enctype="multipart/form-data")
     .form-group
       label(for='exampleInputEmail1') Title
       input#exampleInputEmail1.form-control(type='text', name="title")

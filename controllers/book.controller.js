@@ -41,18 +41,17 @@ module.exports.postAdd = function(req, res) {
   var id = shortid.generate();
   var title = req.body.title;
   var des = req.body.description;
-  var image = 'https://21-file-uploadd.glitch.me/' + req.file.path.slice(7);
-  
-  db.get('books').push({ 
-    id: id, 
-    title: title,
-    description: des
-  }).write();
+  var image = 'https://22-sessionn.glitch.me/' + req.file.path.slice(7);
   
   cloudinary.uploader.upload(image, 
     function(error, result) {
       console.log(result, error);
-      db.get("books").find({ id: res.locals.user.id}).set('avatarUrl', result.url).write();
+      db.get('books').push({ 
+        id: id, 
+        title: title,
+        description: des,
+        coverUrl: result.url
+      }).write();
   });
   
   res.redirect('/books');
