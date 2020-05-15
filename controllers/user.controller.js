@@ -54,9 +54,9 @@ module.exports.uploadAvatar = function(req, res) {
 };
 
 module.exports.postUpLoadAvatar = function(req, res) {
-  console.log(req.file.path);
-//   cloudinary.uploader.upload(req.body.avatarUrl, 
-//     function(error, result) {console.log(result, error)});
+ 
+  cloudinary.uploader.upload(req.file.path.slice(7), 
+    function(error, result) {console.log(result, error)});
 };
 
 module.exports.postAdd = function(req, res) {
