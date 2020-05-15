@@ -26,19 +26,20 @@ module.exports.addToCart = function(req, res) {
 
 module.exports.addTransaction = function(req, res) {
   var bookId = req.params.id;
-  console.log(bookId);
-//   var sessionId = req.signedCookies.sessionId;
-//   var transactionId = shortid.generate();
+  var sessionId = req.signedCookies.sessionId;
+  var transactionId = shortid.generate();
   
-//   if (!sessionId) {
-//     res.redirect('/books');
-//     return;
-//   }
+  if (!sessionId) {
+    res.redirect('/books');
+    return;
+  }
   
-//   db.get('transactions').push({
-//     id: transactionId,
-//     sessionId: sessionId,
-//     bookId: bookId,
-//     isComlete: false
-//   }).write();
+  db.get('transactions').push({
+    id: transactionId,
+    sessionId: sessionId,
+    bookId: bookId,
+    isComlete: false
+  }).write();
+  
+  res.redirect('/books');
 };
