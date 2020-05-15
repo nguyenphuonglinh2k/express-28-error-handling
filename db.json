@@ -3,12 +3,14 @@
     {
       "id": "1",
       "title": "Nhà giả kim",
-      "description": "Câu chuyện về cậu bé theo đuổi giấc mơ"
+      "description": "Câu chuyện về cậu bé theo đuổi giấc mơ",
+      "coverUrl": "https://static.8cache.com/cover/o/eJzLyTDW1zULTa4wdYuyiA8I1A8zytT1cDIwzfDy1HeEgoC0bH1j78QU55DEcnMzRw-TwjwPf3MXT0en7NzMdJNMt8x033Rn53z9ciNDU90MYyMjAF75GZw=/nha-gia-kim-cau-chuyen-mot-giac-mo.jpg"
     },
     {
       "id": "mrazmGpTQ",
       "title": "Không gia đình",
-      "description": "Câu chuyện về tình thương giữa 2 con người lạ lẫm"
+      "description": "Câu chuyện về tình thương giữa 2 con người lạ lẫm",
+      "coverUrl": "https://cdn.glitch.com/a0fd4135-1b04-45e7-b0fd-e9aac260f6c1%2F4e598e29-e292-417e-955e-99facd76ce55.image.png?v=1589525573393"
     }
   ],
   "users": [

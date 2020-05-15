@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(cookieParser('hauoeiwnwh7618y989'));
 
 app.use('/users', authMiddleware.authLogin, cookieMiddleware.cookie, userRoute);
-app.use('/books', authMiddleware.authLogin, cookieMiddleware.cookie, bookRoute);
+app.use('/books', cookieMiddleware.cookie, bookRoute);
 app.use('/transactions', authMiddleware.authLogin, cookieMiddleware.cookie, transactionRoute);
 app.use('/auth', authRoute);
 
