@@ -15,15 +15,11 @@ module.exports.addToCart = function(req, res) {
     .find({ id: sessionId })
     .get('cart.' + bookId, 0)
     .value();
-  
-  console.log(bookId, count, sessionId);
 
   db.get('sessions')
     .find({ id: sessionId })
     .set('cart.' + bookId, count + 1)
     .write();
-  console.log(db.get('sessions')
-    .find({ id: sessionId }).value().cart[bookId]);
 
   res.redirect('/books');
 };
