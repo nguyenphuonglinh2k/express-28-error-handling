@@ -15,12 +15,12 @@ module.exports.index = function(req, res) {
   // res.render('book', {
   //   books: db.get('books').value()
   // });
-  var books = Book.find().then(function(books) {
+  
+  Book.find().then(function(books) {
+     console.log(books);
   });
   
-  res.render('book', {
-      books: books
-    });
+  // res.render('book');
 };
 
 module.exports.add = function(req, res) {
