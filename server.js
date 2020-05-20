@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/express-codersX');
+mongoose.connect('mongodb://localhost/express-codersX', {useNewUrlParser: true});
 
 var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
