@@ -15,6 +15,8 @@ module.exports.addToCart = function(req, res) {
     .find({ id: sessionId })
     .get('cart.' + bookId, 0)
     .value();
+  
+  console.log(bookId, count, sessionId);
 
   db.get('sessions')
     .find({ id: sessionId })
