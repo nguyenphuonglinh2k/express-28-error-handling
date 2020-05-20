@@ -13,9 +13,9 @@ block content
           .card-body
             h5.card-title= item.title
             p.card-text= item.description
-            a.btn.btn-primary.mr-2(href='/books/' + item.id + '/delete') Xóa 
-            a.btn.btn-primary.mr-2(href='/books/' + item.id + '/update') Update
-            a.btn.btn-primary.mt-2(href='/books/cart/add/' + item.id) Thêm vào giỏ
-            a.btn.btn-primary.mt-2(href='/books/cart/transaction/' + item.id) Thuê sách
+            a.btn.btn-primary.mr-2(href='/books/' + item._id + '/delete') Xóa 
+            a.btn.btn-primary.mr-2(href='/books/' + item._id + '/update') Update
+            a.btn.btn-primary.mt-2(href='/books/cart/add/' + item._id) Thêm vào giỏ
+            a.btn.btn-primary.mt-2(href='/books/cart/transaction/' + item._id) Thuê sách
   
       
