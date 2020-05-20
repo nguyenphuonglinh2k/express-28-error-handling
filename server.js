@@ -2,6 +2,9 @@ const express = require('express');
 var shortid = require('shortid');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/express-codersX');
 
 var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
