@@ -3,6 +3,7 @@ require('dotenv').config();
 const shortid = require('shortid');
 var db = require('../db');
 var cloudinary = require('cloudinary').v2;
+var Book = require('../models/book.model.js');
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -11,8 +12,13 @@ cloudinary.config({
 });
 
 module.exports.index = function(req, res) {
-  res.render('book', {
-    books: db.get('books').value()
+  // res.render('book', {
+  //   books: db.get('books').value()
+  // });
+  Book.find().then(function(books) {
+    res.render('book', {
+      books: books
+    });
   });
 };
 
