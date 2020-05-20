@@ -16,9 +16,7 @@ module.exports.index = function(req, res) {
   //   books: db.get('books').value()
   // });
   
-  Book.find().then(function(books) {
-     console.log(books);
-  });
+  Book.find().then(books => console.log(books));
   
   // res.render('book');
 };
