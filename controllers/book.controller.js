@@ -12,15 +12,16 @@ cloudinary.config({
 });
 
 module.exports.index = function(req, res) {
-  // res.render('book', {
-  //   books: db.get('books').value()
-  // });
+  
 
-  Book.find().then(books =>
-    res.render("book", {
-      books: books
-    })
+  Book.find().then(books => {
+      console.log(books)
+    }  
   );
+  
+  res.render('book', {
+    books: db.get('books').value()
+  });
 };
 
 module.exports.add = function(req, res) {
