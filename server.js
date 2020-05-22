@@ -4,11 +4,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/express-codersX').then(() => {
-console.log("Connected to Database");
-}).catch((err) => {
-    console.log("Not Connected to Database ERROR! ", err);
-});
+mongoose.connect('mongodb://localhost/express-codersX');
 
 var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
