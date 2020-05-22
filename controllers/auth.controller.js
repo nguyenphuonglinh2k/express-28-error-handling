@@ -4,6 +4,7 @@ var shortid = require("shortid");
 var db = require("../db");
 var bcrypt = require("bcrypt");
 const sgMail = require('@sendgrid/mail');
+var User = require("../models/user.model.js");
 
 var count = 0;
 
@@ -18,10 +19,11 @@ module.exports.postLogin = function(req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
 
-  var user = db
-    .get("users")
-    .find({ email: email })
-    .value();
+  // var user = db
+  //   .get("users")
+  //   .find({ email: email })
+  //   .value();
+  var user = User.findOne({ email: email });
 
   if (!user) {
     res.render("auth/login", {
@@ -38,10 +40,11 @@ module.exports.postLogin = function(req, res, next) {
         });
 
       } else if (!result) {
-          db.get("users")
-            .find({ email: email })
-            .set("wrongLoginCount", ++count)
-            .write();
+          // db.get("users")
+          //   .find({ email: email })
+          //   .set("wrongLoginCount", ++count)
+          //   .write();
+          User.findOneAndUpdate({ email: email}, { wrongLoginCount: ++count})
           
            if (count === 3) {
             const msg = {
