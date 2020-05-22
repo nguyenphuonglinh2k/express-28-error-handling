@@ -23,8 +23,8 @@ module.exports.postLogin = function(req, res, next) {
   //   .get("users")
   //   .find({ email: email })
   //   .value();
-  var user = User.findOne({ email: email });
-  console.log(user);
+  var user = User.findOne({ email: email }).then(result => console.log(result));
+  
 
   if (!user) {
     res.render("auth/login", {

@@ -40,7 +40,7 @@ module.exports.delete = function(req, res) {
 //     .splice(index, 1)
 //     .write();
   
-  Book.deleteOne({ _id: id });
+  Book.deleteOne({ _id: id }).then(result => {});
 
   res.redirect("back");
 };
