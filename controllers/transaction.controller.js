@@ -11,10 +11,12 @@ module.exports.index = function(req, res) {
   //   transactions: db.get('transactions').drop(drop).take(perPage).value(),
   //   userId: userId
   // });
-  Transaction.find().then(function(transactions) {
-    var item = [...transactions];
-    console.log(item);
-    
+  Transaction.find({}, null, { skip: drop, limit: perPage }).then(function(transactions) {
+    console.log(transactions);
+    res.render('transaction/index', {
+      transactions: transactions,
+      userId: userId
+    });
   });
 };
 
