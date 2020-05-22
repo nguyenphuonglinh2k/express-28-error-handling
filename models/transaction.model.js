@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var transactionSchema = new mongoose.Schema({
   userId: String,
+  sessionId: String,
   bookId: String,
   isComplete: Boolean,
   isAdmin: Boolean

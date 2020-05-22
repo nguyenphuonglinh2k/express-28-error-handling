@@ -12,7 +12,6 @@ module.exports.index = function(req, res) {
   //   userId: userId
   // });
   Transaction.find({}, null, { skip: drop, limit: perPage }).then(function(transactions) {
-    console.log(transactions);
     res.render('transaction/index', {
       transactions: transactions,
       userId: userId
