@@ -26,18 +26,22 @@ module.exports.add = function(req, res) {
 
 module.exports.delete = function(req, res) {
   var id = req.params.id;
-  var item = db
-    .get("books")
-    .find({ _id: id })
-    .value();
-  var index = db
-    .get("books")
-    .indexOf(item)
-    .value();
+  
+//   var item = db
+//     .get("books")
+//     .find({ _id: id })
+//     .value();
+  
+//   var index = db
+//     .get("books")
+//     .indexOf(item)
+//     .value();
 
-  db.get("books")
-    .splice(index, 1)
-    .write();
+//   db.get("books")
+//     .splice(index, 1)
+//     .write();
+  
+  Book.deleteOne({_id: id}, function (err) {console.log(err)});
 
   res.redirect("back");
 };
