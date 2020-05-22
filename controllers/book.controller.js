@@ -13,11 +13,10 @@ cloudinary.config({
 
 module.exports.index = function(req, res) {
   Book.find().then(books => {
-      res.render('book', {
-        books: books
-      });
-    }  
-  );
+    res.render("book", {
+      books: books
+    });
+  });
 };
 
 module.exports.add = function(req, res) {
@@ -53,18 +52,28 @@ module.exports.postAdd = function(req, res) {
   var id = shortid.generate();
   var title = req.body.title;
   var des = req.body.description;
-  var image = "https://22-sessionn.glitch.me/" + req.file.path.slice(7);
+  var image = "https://25-sessionn.glitch.me/" + req.file.path.slice(7);
 
   cloudinary.uploader.upload(image, function(error, result) {
     console.log(result, error);
-    db.get("books")
-      .push({
-        id: id,
-        title: title,
-        description: des,
-        coverUrl: result.url
-      })
-      .write();
+    // db.get("books")
+    //   .push({
+    //     id: id,
+    //     title: title,
+    //     description: des,
+    //     coverUrl: result.url
+    //   })
+    //   .write();
+    var book = new Book({
+      title: title,
+      description: des,
+      coverUrl: result.url
+    });
+    
+    book.save(function (err, book) {
+      if (err) return console.error(err);
+      console.log(book.name + " saved to bookstore collection.");
+    });
   });
 
   res.redirect("/books");
