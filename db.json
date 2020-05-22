@@ -27,7 +27,7 @@
       "password": "$2b$10$YbB8F6vwf729QwHOGew.cuTrK/KLCAybXhGHp9NvuYnaeeMT.R21a",
       "avatarUrl": "http://res.cloudinary.com/coders-tokyo/image/upload/v1589523269/nzznawsqjlwlc1ey46ea.jpg",
       "isAdmin": true,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 1
     },
     {
       "id": "2",

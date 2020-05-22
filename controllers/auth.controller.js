@@ -24,6 +24,7 @@ module.exports.postLogin = function(req, res, next) {
   //   .find({ email: email })
   //   .value();
   var user = User.findOne({ email: email });
+  console.log(user);
 
   if (!user) {
     res.render("auth/login", {
@@ -40,11 +41,11 @@ module.exports.postLogin = function(req, res, next) {
         });
 
       } else if (!result) {
-          // db.get("users")
-          //   .find({ email: email })
-          //   .set("wrongLoginCount", ++count)
-          //   .write();
-          User.findOneAndUpdate({ email: email}, { wrongLoginCount: ++count})
+          db.get("users")
+            .find({ email: email })
+            .set("wrongLoginCount", ++count)
+            .write();
+          // User.findOneAndUpdate({ email: email }, { wrongLoginCount: ++count});
           
            if (count === 3) {
             const msg = {
@@ -69,10 +70,11 @@ module.exports.postLogin = function(req, res, next) {
           });
 
         } else {
-          db.get("users")
-            .find({ email: email })
-            .set("wrongLoginCount", 0)
-            .write();
+          // db.get("users")
+          //   .find({ email: email })
+          //   .set("wrongLoginCount", 0)
+          //   .write();
+          User.findOneAndUpdate({ email: email}, { wrongLoginCount: 0});
 
           count = 0;
 
