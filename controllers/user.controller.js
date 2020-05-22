@@ -64,14 +64,17 @@ module.exports.postUpLoadAvatar = function(req, res) {
 };
 
 module.exports.postAdd = function(req, res) {
-  req.body.id = shortid.generate();
+  // req.body.id = shortid.generate();
 
   // db.get("users")
   //   .push(req.body)
   //   .write();
   
   var  user = new User(req.body);
-  user.save()
+  user.save(function(err, user) {
+    if (err) return console.log(err)
+    else console.log('create successfully!');
+  })
 
   res.redirect("/users");
 };
@@ -79,10 +82,11 @@ module.exports.postAdd = function(req, res) {
 module.exports.postUpdate = function(req, res) {
   var id = req.params.id;
   var name = req.body.newName;
-  db
-    .get("users")
-    .find({ id: id })
-    .value().name = name;
+  // db
+  //   .get("users")
+  //   .find({ id: id })
+  //   .value().name = name;
 
+  User.findByIdAndUpdate({ _id: id}, {name: name}).then(result => {});
   res.redirect("/users");
 };
