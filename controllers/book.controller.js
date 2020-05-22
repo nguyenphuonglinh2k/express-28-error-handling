@@ -41,7 +41,7 @@ module.exports.delete = function(req, res) {
 //     .splice(index, 1)
 //     .write();
   
-  Book.deleteOne({_id: id}, function (err) {console.log(err)});
+  Book.deleteOne({ _id: id });
 
   res.redirect("back");
 };
@@ -87,10 +87,13 @@ module.exports.postAdd = function(req, res) {
 module.exports.postUpdate = function(req, res) {
   var id = req.params.id;
   var title = req.body.newTitle;
-  db
-    .get("books")
-    .find({ id: id })
-    .value().title = title;
+  
+  // db
+  //   .get("books")
+  //   .find({ id: id })
+  //   .value().title = title;
+  
+  Book.update({ _id: id}, {title: title});
 
   res.redirect("/books");
 };
