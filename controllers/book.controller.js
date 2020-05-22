@@ -12,7 +12,6 @@ cloudinary.config({
 });
 
 module.exports.index = function(req, res) {
-  
   Book.find().then(books => {
     res.render("book", {
       books: books
@@ -93,8 +92,7 @@ module.exports.postUpdate = function(req, res) {
   //   .find({ id: id })
   //   .value().title = title;
   
-  Book.findById({ _id: id });
-  Book.findByIdAndUpdate({ _id: id}, {title: title});
+  Book.findByIdAndUpdate({ _id: id}, {title: title}).then(result => {});
 
   res.redirect("/books");
 };
