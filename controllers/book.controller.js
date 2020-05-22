@@ -12,16 +12,12 @@ cloudinary.config({
 });
 
 module.exports.index = function(req, res) {
-  
-
   Book.find().then(books => {
-      console.log(books)
+      res.render('book', {
+        books: books
+      });
     }  
   );
-  
-  res.render('book', {
-    books: db.get('books').value()
-  });
 };
 
 module.exports.add = function(req, res) {
@@ -32,7 +28,7 @@ module.exports.delete = function(req, res) {
   var id = req.params.id;
   var item = db
     .get("books")
-    .find({ id: id })
+    .find({ _id: id })
     .value();
   var index = db
     .get("books")

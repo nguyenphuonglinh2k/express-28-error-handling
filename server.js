@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://linhkeo:linhkeo@users-brgtm.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://linhkeo:linhkeo@users-brgtm.mongodb.net/25-mongoose', { useNewUrlParser: true, useUnifiedTopology: true });
 
 var userRoute = require('./routes/user.route.js');
 var bookRoute = require('./routes/book.route.js');
