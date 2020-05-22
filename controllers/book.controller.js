@@ -52,7 +52,7 @@ module.exports.postAdd = function(req, res) {
   var id = shortid.generate();
   var title = req.body.title;
   var des = req.body.description;
-  var image = "https://25-sessionn.glitch.me/" + req.file.path.slice(7);
+  var image = "https://25-mongoosee.glitch.me/" + req.file.path.slice(7);
 
   cloudinary.uploader.upload(image, function(error, result) {
     console.log(result, error);
