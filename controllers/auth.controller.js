@@ -16,6 +16,7 @@ module.exports.login = function(req, res) {
 
 module.exports.postLogin = function(req, res, next) {
   var errs = [];
+  var user;
   var email = req.body.email;
   var password = req.body.password;
 
@@ -23,10 +24,10 @@ module.exports.postLogin = function(req, res, next) {
   //   .get("users")
   //   .find({ email: email })
   //   .value();
-  var user = User.findOne({ email: email }).then(result => console.log(result));
+  User.findOne({ email: email }).then(result => {
+    var user = result;
   
-
-  if (!user) {
+    if (!user) {
     res.render("auth/login", {
       errs: ["Email is not exist"],
       values: req.body
@@ -83,5 +84,6 @@ module.exports.postLogin = function(req, res, next) {
           });
           return res.redirect("/transactions");
         }
+    });  
   });
 };

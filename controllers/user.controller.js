@@ -12,8 +12,10 @@ cloudinary.config({
 });
 
 module.exports.index = function(req, res) {
-  res.render("users/index", {
-    users: db.get("users").value()
+  User.find().then(users => {
+    res.render("users", {
+      users: users
+    });
   });
 };
 
@@ -23,18 +25,8 @@ module.exports.add = function(req, res) {
 
 module.exports.delete = function(req, res) {
   var id = req.params.id;
-  var item = db
-    .get("users")
-    .find({ id: id })
-    .value();
-  var index = db
-    .get("users")
-    .indexOf(item)
-    .value();
 
-  db.get("users")
-    .splice(index, 1)
-    .write();
+  User.deleteOne({ _id: id }).then(result => {});
 
   res.redirect("back");
 };
@@ -59,12 +51,13 @@ module.exports.uploadAvatar = function(req, res) {
 };
 
 module.exports.postUpLoadAvatar = function(req, res) {
-  var avatar = 'https://21-file-uploadd.glitch.me/' + req.file.path.slice(7);
+  var avatar = 'https://25-mongoosee.glitch.me/' + req.file.path.slice(7);
   
   cloudinary.uploader.upload(avatar, 
     function(error, result) {
       console.log(result, error);
-      db.get("users").find({ id: res.locals.user.id}).set('avatarUrl', result.url).write();
+      // db.get("users").find({ id: res.locals.user.id}).set('avatarUrl', result.url).write();
+      User.findByIdAndUpdate({ _id: res.locals.user.id}, {avatarUrl: result.url}).then(result => {});
   });
   
   res.redirect('/users/profile');
@@ -73,9 +66,12 @@ module.exports.postUpLoadAvatar = function(req, res) {
 module.exports.postAdd = function(req, res) {
   req.body.id = shortid.generate();
 
-  db.get("users")
-    .push(req.body)
-    .write();
+  // db.get("users")
+  //   .push(req.body)
+  //   .write();
+  
+  var  user = new User(req.body);
+  user.save()
 
   res.redirect("/users");
 };
