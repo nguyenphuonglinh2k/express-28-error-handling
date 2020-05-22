@@ -93,7 +93,7 @@ module.exports.postUpdate = function(req, res) {
   //   .find({ id: id })
   //   .value().title = title;
   
-  Book.update({ _id: id}, {title: title});
+  Book.findByIdAndUpdate({ _id: id}, {title: title});
 
   res.redirect("/books");
 };

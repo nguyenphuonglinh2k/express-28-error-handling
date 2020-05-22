@@ -3,6 +3,7 @@ require('dotenv').config();
 const shortid = require("shortid");
 var db = require("../db");
 var cloudinary = require('cloudinary').v2;
+var User = require("../models/user.model.js");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
