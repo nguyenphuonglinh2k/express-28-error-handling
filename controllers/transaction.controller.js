@@ -1,4 +1,5 @@
 var db = require('../db');
+var Transaction = require("../models/transaction.model.js");
 
 module.exports.index = function(req, res) {
   var userId = req.signedCookies.userId;
@@ -6,9 +7,12 @@ module.exports.index = function(req, res) {
   var perPage = 8;
   var drop = (page -1) * perPage;
   
-  res.render('transaction/index', {
-    transactions: db.get('transactions').drop(drop).take(perPage).value(),
-    userId: userId
+  // res.render('transaction/index', {
+  //   transactions: db.get('transactions').drop(drop).take(perPage).value(),
+  //   userId: userId
+  // });
+  Transaction.find().then(function(transaction) {
+    
   });
 };
 
