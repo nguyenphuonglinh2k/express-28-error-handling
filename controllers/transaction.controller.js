@@ -11,7 +11,9 @@ module.exports.index = function(req, res) {
   //   transactions: db.get('transactions').drop(drop).take(perPage).value(),
   //   userId: userId
   // });
-  Transaction.find().then(function(transaction) {
+  Transaction.find().then(function(transactions) {
+    var item = [...transactions];
+    console.log(item);
     
   });
 };
