@@ -13,8 +13,11 @@ var userRoute = require("./routes/user.route.js");
 var bookRoute = require("./routes/book.route.js");
 var transactionRoute = require("./routes/transaction.route.js");
 var authRoute = require("./routes/auth.route.js");
+
 var apiLoginRoute = require('./api/routes/login.route.js');
 var apiTransactionRoute = require('./api/routes/transaction.route.js');
+var apiUserRoute = require('./api/routes/user.route.js');
+var apiBookRoute = require('./api/routes/book.route.js');
 
 var cookieMiddleware = require("./middleware/cookie.middleware.js");
 var authMiddleware = require("./middleware/auth.middleware.js");
@@ -43,6 +46,8 @@ app.use(
 app.use("/auth", authRoute);
 app.use("/api", apiLoginRoute);
 app.use("/api", apiTransactionRoute);
+app.use("/api", apiUserRoute);
+app.use("/api", apiBookRoute);
 
 app.get("/", function(req, res) {
   res.cookie("cookie", shortid.generate());
