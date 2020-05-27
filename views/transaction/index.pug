@@ -5,7 +5,7 @@ block content
 
   if err
     .alert.alert-danger= err 
-  
+    
   each item in transactions
     if item.userId === userId
       .card.m-auto(style='width: 20rem;')

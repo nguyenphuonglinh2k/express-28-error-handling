@@ -42,11 +42,11 @@ module.exports.postLogin = function(req, res, next) {
         });
 
       } else if (!result) {
-          db.get("users")
-            .find({ email: email })
-            .set("wrongLoginCount", ++count)
-            .write();
-          // User.findOneAndUpdate({ email: email }, { wrongLoginCount: ++count});
+          // db.get("users")
+          //   .find({ email: email })
+          //   .set("wrongLoginCount", ++count)
+          //   .write();
+          User.findOneAndUpdate({ email: email }, { wrongLoginCount: ++count}, (err, success) => {});
           
            if (count === 3) {
             const msg = {
