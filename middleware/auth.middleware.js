@@ -5,12 +5,14 @@ module.exports.authLogin = function(req, res, next) {
     var cookie = req.signedCookies.userId;
   
     // var user = db.get("users").find({ id: cookie }).value();
-    var user = User.findById({ _id: cookie}).then(result => {});
+    User.findById({ _id: cookie}).then(result => res.locals.user = result);
+  
+    res.locals.userId = cookie;
     
     if (!cookie) {
       res.redirect('/auth/login');
+      return;
     }
   
-    res.locals.user = user;
     next();
 };

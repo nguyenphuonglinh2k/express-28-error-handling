@@ -25,16 +25,19 @@ module.exports.create = function(req, res) {
 
 module.exports.isComplete = function(req, res) {
   var id = req.params.id;
-  var item = db.get('transactions').find({ id: id }).value();
+  // var item = db.get('transactions').find({ id: id }).value();
+  Transaction.find().then(transactions => {
+    if(!transactions) {
+      res.render('transaction/index', {
+        transactions: transactions,
+        err: 'ID is not exist'
+      });
+      return;
+    }
+
+    // db.get('transactions').find({ id: id }).value().isComplete = true;
+  });
   
-  if(!item) {
-    res.render('transaction/index', {
-      transactions: db.get('transactions').value(),
-      err: 'ID is not exist'
-    });
-    return;
-  }
-  
-  db.get('transactions').find({ id: id }).value().isComplete = true;
+  Transaction.findOneAndReplace({ _id: id}, {isComplete: true}).then(result => {});
   res.redirect('back');
 };

@@ -57,7 +57,7 @@ module.exports.postUpLoadAvatar = function(req, res) {
     function(error, result) {
       console.log(result, error);
       // db.get("users").find({ id: res.locals.user.id}).set('avatarUrl', result.url).write();
-      User.findByIdAndUpdate({ _id: res.locals.user.id}, {avatarUrl: result.url}).then(result => {});
+      User.findByIdAndUpdate({ _id: res.locals.userId}, {avatarUrl: result.url}).then(result => {});
   });
   
   res.redirect('/users/profile');
